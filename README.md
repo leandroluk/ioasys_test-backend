@@ -7,7 +7,8 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 * Você deve fazer um fork deste repositório, criar o código e ao finalizar realizar o commit e solicitar um pull request, nós iremos avaliar e retornar por email o resultado do seu teste.
 
 ### ESCOPO DO PROJETO ###
-
+* Deve ser criada uma API em Ruby on Rails.
+* A API deve fazer o seguinte:
 * Login e acesso de Usuário já registrado
 	* Para o login usamos padrões OAuth 2.0. Na resposta de sucesso do login a api retornará 3 custom headers (access-token, client, uid);
 	* Para ter acesso as demais APIS precisamos enviar esses 3 custom headers para a API autorizar a requisição;
