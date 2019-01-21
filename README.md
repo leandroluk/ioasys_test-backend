@@ -4,7 +4,7 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 
 ### O QUE FAZER ? ###
 
-* Você deve fazer um fork deste repositório, criar o código e ao finalizar realizar o commit e solicitar um pull request, nós iremos avaliar e retornar por email o resultado do seu teste.
+* Você deve realizar um fork deste repositório e, ao finalizar, enviar o link do seu repositório para a nossa equipe. Lembre-se, NÃO é necessário criar um Pull Request para isso, nós iremos avaliar e retornar por email o resultado do seu teste.
 
 ### ESCOPO DO PROJETO ###
 * Deve ser criada uma API em Ruby on Rails.
@@ -41,5 +41,4 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 ### Dicas ###
 
 * Guideline rails http://guides.rubyonrails.org/index.html
-* Componente de autenticação https://github.com/rizel10/simple_token_auth
 * Componente de autenticação https://github.com/lynndylanhurley/devise_token_auth
