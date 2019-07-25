@@ -10,20 +10,12 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 
 - Deve ser criada uma API em **NodeJS** ou **Ruby on Rails**.
 - A API deve fazer o seguinte:
-<<<<<<< HEAD
 
 1. Login e acesso de Usuário já registrado;
 2. Para o login usamos padrões **JWT** ou **OAuth 2.0**;
 3. Listagem de Empresas
 4. Detalhamento de Empresas
 5. Filtro de Empresas por nome e tipo
-=======
-  - Login e acesso de Usuário já registrado
-    - Para o login usamos padrões **JWT** ou **OAuth 2.0**;
-  - Listagem de Empresas
-  - Detalhamento de Empresas
-  - Filtro de Empresas por nome e tipo
->>>>>>> c3a365c80e9f51d52109906d809bd8020c9cc2d3
 
 ### Informações Importantes
 
