@@ -10,11 +10,12 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 
 - Deve ser criada uma API em **NodeJS** ou **Ruby on Rails**.
 - A API deve fazer o seguinte:
-- Login e acesso de Usuário já registrado
-  - Para o login usamos padrões **JWT** ou **OAuth 2.0**;
-- Listagem de Empresas
-- Detalhamento de Empresas
-- Filtro de Empresas por nome e tipo
+
+1. Login e acesso de Usuário já registrado;
+2. Para o login usamos padrões **JWT** ou **OAuth 2.0**;
+3. Listagem de Empresas
+4. Detalhamento de Empresas
+5. Filtro de Empresas por nome e tipo
 
 ### Informações Importantes
 
@@ -25,8 +26,11 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
   - Para ter acesso as demais APIS precisamos enviar esses 3 custom headers para a API autorizar a requisição;
 
 - Mantenha a mesma estrutura do postman em sua API, ou seja, ela deve ter os mesmo atributos, respostas, rotas e tratamentos, funcionando igual ao nosso exemplo.
+
 - Quando seu código for finalizado e disponibilizado para validarmos, vamos subir em nosso servidor e realizar a integração com o app.
+
 - Independente de onde conseguiu chegar no teste é importante disponibilizar seu fonte para analisarmos.
+
 - É obrigatório utilização de Banco de Dados MySql/PostgreSQL
 
 ### Dados para Teste
@@ -41,8 +45,8 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 - Documentação JWT https://jwt.io/
 - Frameworks NodeJS:
 
-  - https://expressjs.com/pt-br/
-  - https://sailsjs.com/
+  1. https://expressjs.com/pt-br/
+  2. https://sailsjs.com/
 
 - Guideline rails http://guides.rubyonrails.org/index.html
 - Componente de autenticação https://github.com/lynndylanhurley/devise_token_auth
