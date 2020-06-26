@@ -1,46 +1,70 @@
-# README
+# Sobre
 
-Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto Empresas.
+Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto de avaliação de candidatos.
 
-### O QUE FAZER ?
+# 🏗 O que fazer?
 
 - Você deve realizar um fork deste repositório e, ao finalizar, enviar o link do seu repositório para a nossa equipe. Lembre-se, NÃO é necessário criar um Pull Request para isso, nós iremos avaliar e retornar por email o resultado do seu teste.
 
-### ESCOPO DO PROJETO
+# 🚨 Requisitos
 
-- Deve ser criada uma API em **NodeJS** ou **Ruby on Rails**.
-- A API deve fazer o seguinte:
+- A API deverá ser construída em **NodeJS** ou **Rails**
+- Implementar autenticação e deverá seguir o padrão **JWT**, lembrando que o token a ser recebido deverá ser no formato **Bearer**
+- Caso seja desenvolvida em NodeJS o seu projeto terá que ser implementado em **ExpressJS** ou **SailsJS**
+- Para a comunicação com o banco de dados utilize algum **ORM**/**ODM**
+- Bancos relacionais permitidos:
+  - MySQL
+  - MariaDB
+  - Postgre
+- Bancos não relacionais permitidos:
+  - MongoDB
+- Sua API deverá seguir os padrões Rest na construção das rotas e retornos
+- Sua API deverá conter a collection/variáveis do postman ou algum endpoint da documentação em openapi para a realização do teste
 
-1. Login e acesso de Usuário já registrado;
-2. Para o login usamos padrões **JWT** ou **OAuth 2.0**;
-3. Listagem de Empresas
-4. Detalhamento de Empresas
-5. Filtro de Empresas por nome e tipo
+# 🕵🏻‍♂️ Itens a serem avaliados
 
-### Informações Importantes
+- Estrutura do Projeto
+- Segurança da API, como autenticação, senhas salvas no banco, SQL Injection e outros
+- Boas práticas da Linguagem/Framework
+- Seu projeto deverá seguir tudo o que foi exigido na seção [O que desenvolver?](##--o-que-desenvolver)
+- Migrations para a criação das tabelas do banco relacional
 
-- A API deve funcionar exatamente da mesma forma que a disponibilizada na collection do postman, mais abaixo os acessos a API estarão disponíveis em nosso servidor.
+# 🎁 Extra
 
-  - Para o login usamos padrões OAuth 2.0. Na resposta de sucesso do login a api retornará 3 custom headers (access-token, client, uid);
+Esses itens não são obrigatórios, porém desejados.
 
-  - Para ter acesso as demais APIS precisamos enviar esses 3 custom headers para a API autorizar a requisição;
+- Testes unitários
+- Linter
+- Code Formater
 
-- Mantenha a mesma estrutura do postman em sua API, ou seja, ela deve ter os mesmo atributos, respostas, rotas e tratamentos, funcionando igual ao nosso exemplo.
+**Obs.: Lembrando que o uso de algum linter ou code formater irá depender da linguagem que sua API for criada**
 
-- Quando seu código for finalizado e disponibilizado para validarmos, vamos subir em nosso servidor e realizar a integração com o app.
+# 🖥 O que desenvolver?
 
-- Independente de onde conseguiu chegar no teste é importante disponibilizar seu fonte para analisarmos.
+Você deverá criar uma API que o site [IMDb](https://www.imdb.com/) irá consultar para exibir seu conteúdo, sua API deve conter as seguintes features:
 
-- É obrigatório utilização de Banco de Dados MySql/PostgreSQL
+- Admin
 
-### Dados para Teste
+  - Cadastro
+  - Edição
+  - Exclusão lógica (Desativação)
 
-- Servidor: https://empresas.ioasys.com.br/
-- Versão da API: v1
-- Usuário de Teste: testeapple@ioasys.com.br
-- Senha de Teste : 12341234
+- Usuário
 
-### Dicas
+  - Cadastro
+  - Edição
+  - Exclusão lógica (Desativação)
+
+- Filmes
+
+  - Cadastro (Somente um usuário administrador poderá realizar esse cadastro)
+  - Voto (A contagem dos votos será feita por usuário de 0-4 que indica quanto o usuário gostou do filme)
+  - Listagem (deverá ter filtro por diretor, nome, gênero e/ou atores)
+  - Detalhe do filme trazendo todas as informações sobre o filme, inclusive a média dos votos
+
+**Obs.: Apenas os usuários poderão votar nos filmes e a API deverá validar quem é o usuário que está acessando, ou seja, se é admin ou não**
+
+# 🔗 Links
 
 - Documentação JWT https://jwt.io/
 - Frameworks NodeJS:
@@ -49,4 +73,3 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
   2. https://sailsjs.com/
 
 - Guideline rails http://guides.rubyonrails.org/index.html
-- Componente de autenticação https://github.com/lynndylanhurley/devise_token_auth
