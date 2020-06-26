@@ -10,7 +10,7 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 
 - A API deverá ser construída em **NodeJS** ou **Rails**
 - Implementar autenticação e deverá seguir o padrão **JWT**, lembrando que o token a ser recebido deverá ser no formato **Bearer**
-- Caso seja desenvolvida em NodeJS o seu projeto terá que ser implementado em em **ExpressJS** ou **SailsJS**
+- Caso seja desenvolvida em NodeJS o seu projeto terá que ser implementado em **ExpressJS** ou **SailsJS**
 - Para a comunicação com o banco de dados utilize algum **ORM**/**ODM**
 - Bancos relacionais permitidos:
   - MySQL
@@ -27,6 +27,7 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 - Segurança da API, como autenticação, senhas salvas no banco, SQL Injection e outros
 - Boas práticas da Linguagem/Framework
 - Seu projeto deverá seguir tudo o que foi exigido na seção [O que desenvolver?](##--o-que-desenvolver)
+- Migrations para a criação das tabelas do banco relacional
 
 # 🎁 Extra
 
