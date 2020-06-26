@@ -63,7 +63,7 @@ Você deverá criar uma API que o site [IMDb](https://www.imdb.com/) irá consul
 
 **Obs.: Apenas os usuários poderão votar nos filmes e a API deverá validar quem é o usuário que está acessando, ou seja, se é admin ou não**
 
-# 🔗Links
+# 🔗 Links
 
 - Documentação JWT https://jwt.io/
 - Frameworks NodeJS:
