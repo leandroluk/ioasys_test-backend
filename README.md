@@ -15,7 +15,7 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
 - Bancos relacionais permitidos:
   - MySQL
   - MariaDB
-  - Postgres
+  - Postgre
 - Bancos não relacionais permitidos:
   - MongoDB
 - Sua API deverá seguir os padrões Rest na construção das rotas e retornos
