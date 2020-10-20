@@ -20,7 +20,7 @@ Estes documento README tem como objetivo fornecer as informações necessárias 
   - MongoDB
 - Sua API deverá seguir os padrões Rest na construção das rotas e retornos
 - Sua API deverá conter a collection/variáveis do postman ou algum endpoint da documentação em openapi para a realização do teste
-- O seu projeto deverá ser feito em JavaScript, não aceitaremos projetos realizados em TypeScript. 🚨
+- Serão aceitos testes somente em **JavaScript** buscando avaliar o entendimento completo da linguagem e não de estruturas ou dependências que abstraiam determinadas definições não alheias ao ECMAScript.
 
 # 🕵🏻‍♂️ Itens a serem avaliados
 
