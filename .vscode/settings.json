@@ -1,8 +1,9 @@
 {
   // editor
   "editor.formatOnSave": false,
-  "editor.detectIndentation": false,
   "editor.tabSize": 2,
+  "editor.insertSpaces": true,
+  "editor.detectIndentation": false,
   "editor.rulers": [
     80,
     120,
@@ -11,5 +12,7 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.organizeImports": true
-  }
+  },
+  "typescript.preferences.quoteStyle": "single",
+  "typescript.format.semicolons": "remove",
 }
