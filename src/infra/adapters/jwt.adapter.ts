@@ -4,7 +4,10 @@ import { IBearerTokenModel } from '../../domain/models/bearer-token.interface'
 import { IUserModel } from '../../domain/models/user.interface'
 
 export class JwtAdapter implements IJwt {
-  constructor(readonly secret: string, readonly hoursToExpire: number = 6) {}
+  constructor(
+    readonly secret: string,
+    readonly hoursToExpire: number = 6
+  ) {}
 
   async generate(data: IUserModel): Promise<IBearerTokenModel> {
     return await new Promise((resolve, reject) => {

@@ -5,6 +5,6 @@ export interface IUserModel extends IModel {
   username: string
 }
 
-export interface IUserWithPasswordModel extends IUserModel{
+export interface IUserWithPasswordModel extends IUserModel {
   password: string
 }

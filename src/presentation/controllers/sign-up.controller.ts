@@ -5,7 +5,9 @@ import { IController } from '../protocols/controller.interface'
 import { IHttpRequest, IHttpResponse } from '../protocols/http.interface'
 
 export class SignUpController implements IController {
-  constructor(readonly addUserValidator: IAddUserValidator) {}
+  constructor(
+    readonly addUserValidator: IAddUserValidator
+  ) {}
 
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const { body } = httpRequest

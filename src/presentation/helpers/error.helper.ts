@@ -6,12 +6,7 @@ export const errorToJson = (value: string | {[key: string]: any} | Error): IDict
       ? {
           name: value?.constructor?.name,
           ...Object.getOwnPropertyNames(value)
-            .filter(key => {
-              if (value instanceof Error) {
-                return key !== 'stack'
-              }
-              return true
-            })
+            .filter(key => value instanceof Error ? key !== 'stack' : true)
             .reduce((obj, key) => ({ ...obj, [key]: transform(value[key]) }), {})
         }
       : value

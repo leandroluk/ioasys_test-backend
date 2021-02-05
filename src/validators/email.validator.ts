@@ -5,7 +5,11 @@ export class EmailValidator implements IEmailValidator {
   async isEmail(value: string): Promise<boolean> {
     return await new Promise(resolve => {
       try {
-        resolve(![undefined, null, ''].includes(value) && typeof value === 'string' && validator.isEmail(value))
+        resolve(
+          ![undefined, null, ''].includes(value) &&
+          typeof value === 'string' &&
+          validator.isEmail(value)
+        )
       } catch (error) {
         resolve(false)
       }

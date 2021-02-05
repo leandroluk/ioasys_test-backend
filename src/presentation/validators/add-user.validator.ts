@@ -7,7 +7,11 @@ import { IEmailValidator } from '../protocols/email.validator.interface'
 import { IEmptyValidator } from '../protocols/empty.validator.interface'
 import { IStringValidator } from '../protocols/string.validator.interface'
 export class AddUserValidator implements IAddUserValidator {
-  constructor(readonly emptyValidator: IEmptyValidator, readonly emailValidator: IEmailValidator, readonly stringValidator: IStringValidator) {}
+  constructor(
+    readonly emptyValidator: IEmptyValidator,
+    readonly emailValidator: IEmailValidator,
+    readonly stringValidator: IStringValidator
+  ) {}
 
   async validateAddUser(data: IAddUserModel): Promise<IDictionary<Error>> {
     const errors: IDictionary<Error> = {}
