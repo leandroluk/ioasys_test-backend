@@ -11,13 +11,5 @@
   "editor.codeActionsOnSave": {
     "source.fixAll": true,
     "source.organizeImports": true
-  },
-  "eslint.validate": [
-    "typescript"
-  ],
-  // typescript
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
-  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-  // javascript
-  "javascript.suggestionActions.enabled": false,
+  }
 }
