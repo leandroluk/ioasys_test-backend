@@ -1,0 +1,23 @@
+{
+  "name": "ioasys_test-backend",
+  "version": "1.0.0",
+  "description": "Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto de avaliação de candidatos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leandroluk/ioasys_test-backend.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/leandroluk/ioasys_test-backend/issues"
+  },
+  "homepage": "https://github.com/leandroluk/ioasys_test-backend#readme",
+  "devDependencies": {
+    "git-commit-msg-linter": "^3.0.0"
+  }
+}
