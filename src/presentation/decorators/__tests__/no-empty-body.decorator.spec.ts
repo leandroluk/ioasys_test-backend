@@ -30,25 +30,25 @@ const makeSut = (): {
 }
 
 describe('noEmptyBody', () => {
-  test('should build and return decorator', () => {
+  it('should build and return decorator', () => {
     const decorator = noEmptyBody(new EmptyValidatorMock())
     expect(decorator).toBeInstanceOf(Function)
   })
 
-  test('should call IEmptyValidator', async () => {
+  it('should call IEmptyValidator', async () => {
     const { controller, emptyValidator } = makeSut()
     const isEmptySpy = jest.spyOn(emptyValidator, 'isEmpty')
     await controller.handle({})
     expect(isEmptySpy).toHaveBeenCalled()
   })
 
-  test('should throw if IEmptyValidator throw', async () => {
+  it('should throw if IEmptyValidator throw', async () => {
     const { controller, emptyValidator } = makeSut()
     jest.spyOn(emptyValidator, 'isEmpty').mockImplementation(throwFn)
     await expect(controller.handle({})).rejects.toThrow()
   })
 
-  test('should return bad request if no have body', async () => {
+  it('should return bad request if no have body', async () => {
     const { controller, emptyValidator } = makeSut()
     jest.spyOn(emptyValidator, 'isEmpty').mockResolvedValue(true)
     const result = await controller.handle({})
@@ -56,7 +56,7 @@ describe('noEmptyBody', () => {
     expect(result.body?.message).toMatch(MissingParamError.REGEX_MATCH)
   })
 
-  test('should return ok if have body', async () => {
+  it('should return ok if have body', async () => {
     const { controller, emptyValidator } = makeSut()
     jest.spyOn(emptyValidator, 'isEmpty').mockResolvedValue(false)
     const result = await controller.handle({ body: {} })

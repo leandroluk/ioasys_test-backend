@@ -1,7 +1,7 @@
 import { throwFn } from '../helpers'
 describe('helpers', () => {
   describe('throwFn', () => {
-    test('should throw error', () => {
+    it('should throw error', () => {
       expect(throwFn).toThrow()
     })
   })

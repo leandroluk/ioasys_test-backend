@@ -37,7 +37,7 @@ const makeSut = (): {
 
 describe(
   'add-user.repository', () => {
-    test('should true', () => {
+    it('should true', () => {
       const { sut } = makeSut()
       console.log(sut)
     })

@@ -27,7 +27,7 @@ const makeSut = (): {
 
 describe('sign-up.controller', () => {
   describe('handle', () => {
-    test('should addUserValidator to be called', async () => {
+    it('should addUserValidator to be called', async () => {
       const { sut, expectedBody, addUserValidator } = makeSut()
       const addUserValidatorSpy = jest.spyOn(addUserValidator, 'validateAddUser')
       const httpRequest = { body: expectedBody }
@@ -35,7 +35,7 @@ describe('sign-up.controller', () => {
       expect(addUserValidatorSpy).toHaveBeenCalled()
     })
 
-    test("should return 400 with object validation error if one of required fields isn't provided", async () => {
+    it("should return 400 with object validation error if one of required fields isn't provided", async () => {
       const { sut, expectedBody, addUserValidator } = makeSut()
 
       jest.spyOn(addUserValidator, 'validateAddUser').mockImplementation(

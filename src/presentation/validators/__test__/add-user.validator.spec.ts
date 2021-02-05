@@ -36,14 +36,14 @@ const makeSut = (): {
 
 describe('add-user.validator', () => {
   describe('validateAddUser', () => {
-    test('should call emptyValidator', async () => {
+    it('should call emptyValidator', async () => {
       const { sut, emptyValidator, validData } = makeSut()
       const isEmptySpy = jest.spyOn(emptyValidator, 'isEmpty')
       await sut.validateAddUser(validData)
       expect(isEmptySpy).toBeCalled()
     })
 
-    test('should call emptyValidator, emailValidator and stringValidator', async () => {
+    it('should call emptyValidator, emailValidator and stringValidator', async () => {
       const { sut, emptyValidator, emailValidator, stringValidator, validData } = makeSut()
       jest.spyOn(emptyValidator, 'isEmpty').mockResolvedValue(false)
       const isEmailSpy = jest.spyOn(emailValidator, 'isEmail')
@@ -53,7 +53,7 @@ describe('add-user.validator', () => {
       expect(isStringSpy).toBeCalled()
     })
 
-    test('should return a dictionary with errors if some required field is missing', async () => {
+    it('should return a dictionary with errors if some required field is missing', async () => {
       const { sut, validData } = makeSut()
 
       for (const [field] of Object.entries(validData)) {
@@ -64,7 +64,7 @@ describe('add-user.validator', () => {
       }
     })
 
-    test('should return a dictionary with errors if some required field is invalid', async () => {
+    it('should return a dictionary with errors if some required field is invalid', async () => {
       const { sut, validData, emptyValidator, emailValidator, stringValidator } = makeSut()
 
       jest.spyOn(emptyValidator, 'isEmpty').mockResolvedValue(false)
@@ -79,7 +79,7 @@ describe('add-user.validator', () => {
       }
     })
 
-    test("should return a dictionary with errors if password isn't equal passwordConfirmation", async () => {
+    it("should return a dictionary with errors if password isn't equal passwordConfirmation", async () => {
       const { sut, validData } = makeSut()
       const result = await sut.validateAddUser({ ...validData, password: '1' })
       expect(result.passwordConfirmation).toBeDefined()

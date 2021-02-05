@@ -40,7 +40,7 @@ jest.mock('jsonwebtoken', () => ({
 
 describe('JwtTokenAdapter', () => {
   describe('generate', () => {
-    test('should call jwt with correct values', async () => {
+    it('should call jwt with correct values', async () => {
       const { sut, hoursToExpire, data } = makeStut()
       const signSpy = jest.spyOn(jwt, 'sign')
       await sut.generate(data)
@@ -48,7 +48,7 @@ describe('JwtTokenAdapter', () => {
       expect(signSpy).toHaveBeenCalledWith(data, 'secret', { expiresIn: `${hoursToExpire}h` })
     })
 
-    test('should return a bearer token on success', async () => {
+    it('should return a bearer token on success', async () => {
       const { sut, data } = makeStut()
       const result = await sut.generate(data)
 
@@ -57,7 +57,7 @@ describe('JwtTokenAdapter', () => {
       expect(result.expiresAt).toBeDefined()
     })
 
-    test('should throw if jwt throws', async () => {
+    it('should throw if jwt throws', async () => {
       const { sut, data } = makeStut()
       jest.spyOn(jwt, 'sign').mockImplementationOnce(throwFn)
       await expect(sut.generate(data)).rejects.toThrow()
@@ -66,7 +66,7 @@ describe('JwtTokenAdapter', () => {
 
   describe('verify', () => {
     jest.resetAllMocks()
-    test('should return jwt data if jwt return jwt data', async () => {
+    it('should return jwt data if jwt return jwt data', async () => {
       const { sut, accessToken } = makeStut()
 
       const result: any = await sut.verify(accessToken)
