@@ -1,0 +1,23 @@
+{
+  // editor
+  "editor.formatOnSave": false,
+  "editor.detectIndentation": false,
+  "editor.tabSize": 2,
+  "editor.rulers": [
+    80,
+    120,
+    160
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll": true,
+    "source.organizeImports": true
+  },
+  "eslint.validate": [
+    "typescript"
+  ],
+  // typescript
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingEmptyBraces": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+  // javascript
+  "javascript.suggestionActions.enabled": false,
+}
