@@ -43,7 +43,7 @@ describe('add-user.validator', () => {
       expect(isEmptySpy).toBeCalled()
     })
 
-    it('should call emptyValidator, emailValidator and stringValidator', async () => {
+    it('should call emailValidator and stringValidator', async () => {
       const { sut, emptyValidator, emailValidator, stringValidator, validData } = makeSut()
       jest.spyOn(emptyValidator, 'isEmpty').mockResolvedValue(false)
       const isEmailSpy = jest.spyOn(emailValidator, 'isEmail')
@@ -68,15 +68,16 @@ describe('add-user.validator', () => {
       const { sut, validData, emptyValidator, emailValidator, stringValidator } = makeSut()
 
       jest.spyOn(emptyValidator, 'isEmpty').mockResolvedValue(false)
-      jest.spyOn(emailValidator, 'isEmail').mockResolvedValueOnce(false)
-      jest.spyOn(stringValidator, 'isString').mockResolvedValueOnce(false)
+      jest.spyOn(emailValidator, 'isEmail').mockResolvedValue(false)
+      jest.spyOn(stringValidator, 'isString').mockResolvedValue(false)
 
-      for (const [field] of Object.entries(validData)) {
-        const dataWithoutField: any = { ...validData }
-        dataWithoutField[field] = 1
-        const result = await sut.validateAddUser(dataWithoutField)
-        expect(Object.keys(result).length).toBeGreaterThan(0)
-      }
+      const dataWithoutField: any = Object.keys(validData)
+        .reduce((obj, key) => ({ ...obj, [key]: 1 }), {})
+      const result = await sut.validateAddUser(dataWithoutField)
+      expect(result.email).toBeDefined()
+      expect(result.username).toBeDefined()
+      expect(result.password).toBeDefined()
+      expect(result.passwordConfirmation).toBeDefined()
     })
 
     it("should return a dictionary with errors if password isn't equal passwordConfirmation", async () => {
