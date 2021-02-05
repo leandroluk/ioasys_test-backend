@@ -4,6 +4,7 @@ import {
   IAddUserModel
 } from '../../domain/use-cases/add-user.interface'
 import { IGetUserByEmail } from '../../domain/use-cases/get-user-by-email.interface'
+import { EmailInUseError } from '../../errors/email-in-use.error'
 import { IEncrypter } from '../protocols/encrypter.interface'
 
 export class AddUserRepository implements IAddUser {
@@ -14,6 +15,16 @@ export class AddUserRepository implements IAddUser {
   ) {}
 
   async addUser(data: IAddUserModel): Promise<IUserModel> {
-    throw new Error('Method not implemented.')
+    data = { ...data }
+
+    const existingUser = await this.dbGetUserByEmail.getUserByEmail(data.email)
+
+    if (existingUser) {
+      throw new EmailInUseError(data.email)
+    }
+
+    data.password = await this.encrypter.encrypt(data.password)
+
+    return await this.dbAddUser.addUser(data)
   }
 }
