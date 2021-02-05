@@ -31,8 +31,8 @@ const makeSut = (): {
 
 describe('noEmptyBody', () => {
   it('should build and return decorator', () => {
-    const decorator = noEmptyBody(new EmptyValidatorMock())
-    expect(decorator).toBeInstanceOf(Function)
+    expect(noEmptyBody(new EmptyValidatorMock())).toBeInstanceOf(Function)
+    expect(noEmptyBody()).toBeInstanceOf(Function)
   })
 
   it('should call IEmptyValidator', async () => {

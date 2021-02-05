@@ -39,6 +39,10 @@ jest.mock('jsonwebtoken', () => ({
 }))
 
 describe('JwtTokenAdapter', () => {
+  it('should build JwtAdapter', () => {
+    expect(new JwtAdapter('secret').hoursToExpire).toBeDefined()
+    expect(new JwtAdapter('secret', 3).hoursToExpire).toBeDefined()
+  })
   describe('generate', () => {
     it('should call jwt with correct values', async () => {
       const { sut, hoursToExpire, data } = makeStut()

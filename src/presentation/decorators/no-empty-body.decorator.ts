@@ -5,9 +5,7 @@ import { IController } from '../protocols/controller.interface'
 import { IEmptyValidator } from '../protocols/empty.validator.interface'
 import { IHttpRequest, IHttpResponse } from '../protocols/http.interface'
 
-export function noEmptyBody(
-  emptyValidator: IEmptyValidator = new EmptyValidator()
-): Function {
+export function noEmptyBody(emptyValidator: IEmptyValidator = new EmptyValidator()): Function {
   let IController_handle: IController['handle']
 
   return (
