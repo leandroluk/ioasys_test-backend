@@ -5,3 +5,4 @@ streams
 globalConfig.json
 .tmp
 .DS_Store
+package-lock.json
