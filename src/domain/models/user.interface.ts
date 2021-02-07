@@ -1,6 +1,6 @@
-import { IModel } from '../generics/model.interface'
+import { IBaseModel } from '../generics/base-model.interface'
 
-export interface IUserModel extends IModel {
+export interface IUserModel extends IBaseModel {
   email: string
   username: string
 }
