@@ -11,7 +11,10 @@ module.exports = {
     '!<rootDir>/src/**/constants.ts'
   ],
   coveragePathIgnorePatterns: [
-    '<rootDir>/src/mocks/'
+    '<rootDir>/src/mocks/',
+    '<rootDir>/src/main/config/',
+    '<rootDir>/src/main/server.ts',
+    '<rootDir>/src/main/routes/health-check.route.ts'
   ],
   coverageDirectory: 'coverage',
   testEnvironment: 'node',
