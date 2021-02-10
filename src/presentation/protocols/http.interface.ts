@@ -7,11 +7,15 @@ export enum HttpStatusCode {
   serverError = 500
 }
 
-export interface IHttpRequest<Header = any, Body = any> {
+export interface IHttpRequest<Header = any, Body = any, Params = any, Query = any> {
   header?: Header
   body?: Body
+  params?: Params
+  query?: Query
 }
 
-export interface IHttpResponse<Header = any, Body = any> extends IHttpRequest<Header, Body> {
+export interface IHttpResponse<Header = any, Body = any> {
   statusCode: number
+  header?: Header
+  body?: Body
 }
