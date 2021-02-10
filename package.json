@@ -4,6 +4,7 @@
   "description": "Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto de avaliação de candidatos.",
   "main": "index.js",
   "scripts": {
+    "start": "sucrase-node src/main/server.ts",
     "prebuild": "eslint src/** --fix",
     "build": "tsc -p .",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
@@ -53,6 +54,7 @@
     "husky": "^4.3.8",
     "jest": "^26.6.3",
     "lint-staged": "^10.5.3",
+    "sucrase": "^3.17.1",
     "ts-jest": "^26.5.0",
     "typescript": "^4.1.3"
   },
