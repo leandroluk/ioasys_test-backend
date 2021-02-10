@@ -43,6 +43,7 @@ describe('mongo.helper', () => {
     it("should return undefined if doc isn't passed", () => {
       expect(MongoHelper.map(null as any)).toBeUndefined()
       expect(MongoHelper.map(undefined as any)).toBeUndefined()
+      expect(MongoHelper.map('' as any)).toBeUndefined()
     })
 
     it('should return an object with field _id if an object is provided', () => {
