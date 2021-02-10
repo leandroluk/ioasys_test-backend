@@ -2,6 +2,7 @@ export default {
   app: {
     basePath: process.env.PWD,
     port: process.env.app_port ?? '3000',
+    apiBasePath: process.env.app_apiBasePatb ?? '/@',
     corsControlAllowOrigin: process.env.app_corsControlAllowOrigin ?? '*'
   },
   mongo: {
