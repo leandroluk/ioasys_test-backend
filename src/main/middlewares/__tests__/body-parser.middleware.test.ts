@@ -1,8 +1,8 @@
 import request from 'supertest'
 import app from '../../config/app'
 
-describe('bodyParser', () => {
-  test('should should parse body as json', async () => {
+describe('body-parser.middleware', () => {
+  it('should should parse body as json', async () => {
     const url = '/test-body-parser'
     const data = { name: 'test' }
 

@@ -1,8 +1,8 @@
 import request from 'supertest'
 import app from '../../config/app'
 
-describe('header parser', () => {
-  test('should return lowercase headers', async () => {
+describe('header-parser.middleware', () => {
+  it('should return lowercase headers', async () => {
     const url = '/test-header-parser'
 
     app.get(url, (req, res) => res.send(req.headers))
