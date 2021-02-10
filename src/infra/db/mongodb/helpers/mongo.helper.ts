@@ -19,7 +19,7 @@ export const MongoHelper = {
     await this.client.close()
   },
 
-  collection(name: string): Collection {
+  getCollection(name: string): Collection {
     return (this.client as MongoClient).db().collection(name)
   },
 

@@ -30,10 +30,10 @@ describe('mongo.helper', () => {
     })
   })
 
-  describe('collection', () => {
+  describe('getCollection', () => {
     it('should return a collection', async () => {
       await MongoHelper.connect(process.env.MONGO_URL)
-      const collection = MongoHelper.collection('test')
+      const collection = MongoHelper.getCollection('test')
       expect(collection).toBeDefined()
       await MongoHelper.disconnect()
     })
