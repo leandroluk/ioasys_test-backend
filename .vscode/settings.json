@@ -13,6 +13,9 @@
     "source.fixAll": true,
     "source.organizeImports": true
   },
+  // typescript
   "typescript.preferences.quoteStyle": "single",
   "typescript.format.semicolons": "remove",
+  // git
+  "git.inputValidation": "off"
 }
