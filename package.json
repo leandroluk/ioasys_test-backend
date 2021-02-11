@@ -4,7 +4,7 @@
   "description": "Estes documento README tem como objetivo fornecer as informações necessárias para realização do projeto de avaliação de candidatos.",
   "main": "index.js",
   "scripts": {
-    "start": "sucrase-node src/main/server.ts",
+    "start": "cross-env NODE_ENV=local sucrase-node src/main/server.ts",
     "prebuild": "eslint src/** --fix",
     "build": "tsc -p .",
     "test": "jest --passWithNoTests --silent --noStackTrace --runInBand --detectOpenHandles",
@@ -45,6 +45,7 @@
     "@types/supertest": "^2.0.10",
     "@types/validator": "^13.1.3",
     "@typescript-eslint/eslint-plugin": "^4.14.2",
+    "cross-env": "^7.0.3",
     "eslint": "^7.19.0",
     "eslint-config-standard-with-typescript": "^20.0.0",
     "eslint-plugin-import": "^2.22.1",
