@@ -3,7 +3,7 @@ export default {
     basePath: process.env.PWD,
     port: process.env.app_port ?? '3000',
     apiBasePath: process.env.app_apiBasePath ?? '/@',
-    healthCheckBasePath: process.env.app_healthCheckBasePath ?? '/@/health',
+    healthCheckBasePath: process.env.app_healthCheckBasePath ?? '/health',
     corsControlAllowOrigin: process.env.app_corsControlAllowOrigin ?? '*'
   },
   mongo: {
