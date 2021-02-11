@@ -9,7 +9,7 @@ import { IEncrypter } from '../protocols/encrypter.interface'
 
 export class AddUserRepository implements IAddUser {
   constructor(
-    readonly dbGetUserByEmail: IGetUserByEmail,
+    readonly getUserByEmail: IGetUserByEmail,
     readonly encrypter: IEncrypter,
     readonly dbAddUser: IAddUser
   ) { }
@@ -17,7 +17,7 @@ export class AddUserRepository implements IAddUser {
   async addUser(data: IAddUserModel, by: string): Promise<IUserModel> {
     data = { ...data }
 
-    const existingUser = await this.dbGetUserByEmail.getUserByEmail(data.email)
+    const existingUser = await this.getUserByEmail.getUserByEmail(data.email)
 
     if (existingUser) {
       throw new EmailInUseError(data.email)
