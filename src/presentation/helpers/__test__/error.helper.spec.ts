@@ -12,8 +12,7 @@ describe('error.helper', () => {
     const testErrorResult = {
       bar: 'bar',
       foo: 'foo',
-      message: 'TestError',
-      name: 'TestError'
+      message: 'TestError'
     }
 
     it('should transform errors into json object with only public properties', () => {
@@ -39,16 +38,16 @@ describe('error.helper', () => {
     })
 
     it('should return a simple object if a simple object is passed', () => {
-      const errorObject = { name: 'name', field: 'field' }
+      const errorObject = { field: 'field' }
       const result = errorToJson(errorObject)
-      expect(result.name).toBeDefined()
+      expect(result.name).toBeUndefined()
       expect(result.field).toBe(errorObject.field)
     })
 
     it("should return a simple object with name of type if name isn't passed", () => {
       const errorObjectWithoutName = { field: 'field' }
       const result = errorToJson(errorObjectWithoutName)
-      expect(result.name).toBeDefined()
+      expect(result.name).toBeUndefined()
       expect(result.field).toBe(errorObjectWithoutName.field)
     })
   })

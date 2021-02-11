@@ -3,12 +3,9 @@ import { IDictionary } from '../../domain/generics/dictionary.interface'
 export const errorToJson = (value: string | {[key: string]: any} | Error): IDictionary<any> => {
   const transform = (value: any): any => {
     return value && typeof value === 'object'
-      ? {
-          name: value?.constructor?.name,
-          ...Object.getOwnPropertyNames(value)
-            .filter(key => value instanceof Error ? key !== 'stack' : true)
-            .reduce((obj, key) => ({ ...obj, [key]: transform(value[key]) }), {})
-        }
+      ? Object.getOwnPropertyNames(value)
+        .filter(key => value instanceof Error ? key !== 'stack' : true)
+        .reduce((obj, key) => ({ ...obj, [key]: transform(value[key]) }), {})
       : value
   }
 
