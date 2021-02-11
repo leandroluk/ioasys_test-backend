@@ -9,7 +9,7 @@ export interface IAddUserModel {
 }
 
 export interface IAddUser {
-  addUser(data: IAddUserModel): Promise<IUserModel>
+  addUser(data: IAddUserModel, createdBy: string): Promise<IUserModel>
 }
 
 export interface IAddUserValidator {

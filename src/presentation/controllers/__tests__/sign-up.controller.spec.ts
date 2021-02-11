@@ -1,6 +1,7 @@
-import { IAddUserModel, IAddUserValidator } from '../../../domain/use-cases/add-user.interface'
+import { IAddUser, IAddUserModel, IAddUserValidator } from '../../../domain/use-cases/add-user.interface'
 import { INoEmptyBodyValidator } from '../../../domain/use-cases/no-empty-body.interface'
 import { MissingParamError } from '../../../errors/missing-param.error'
+import { AddUserMock } from '../../../mocks/domain/use-cases/add-user'
 import { NoEmptyBodyValidatorMock } from '../../../mocks/domain/use-cases/no-empty-body-validator'
 import { AddUserValidatorMock } from '../../../mocks/presentation/validators/add-user.validator'
 import { badRequest } from '../../helpers/http.helper'
@@ -11,12 +12,14 @@ import { SignUpController } from '../sign-up.controller'
 const makeSut = (): {
   noEmptyBodyValidator: INoEmptyBodyValidator
   addUserValidator: IAddUserValidator
+  addUser: IAddUser
   sut: IController
   expectedBody: IAddUserModel
 } => {
   const noEmptyBodyValidator = new NoEmptyBodyValidatorMock()
   const addUserValidator = new AddUserValidatorMock()
-  const sut = new SignUpController(noEmptyBodyValidator, addUserValidator)
+  const addUser = new AddUserMock()
+  const sut = new SignUpController(noEmptyBodyValidator, addUserValidator, addUser)
   const expectedBody: IAddUserModel = {
     email: 'a@a.com',
     username: 'username',
@@ -27,6 +30,7 @@ const makeSut = (): {
   return {
     noEmptyBodyValidator,
     addUserValidator,
+    addUser,
     sut,
     expectedBody
   }
@@ -75,8 +79,14 @@ describe('sign-up.controller', () => {
         const httpRequest = { body }
         const httpResponse = await sut.handle(httpRequest)
         expect(httpResponse.statusCode).toBe(400)
-        expect(httpResponse.body?.errors.field?.message).toMatch(/missing param/i)
+        expect(httpResponse.body?.errors.field?.message).toMatch(MissingParamError.REGEX_MATCH)
       }
+    })
+
+    it('should return 400 if addUserRepository throw error', async () => {
+      const { sut, addUser, expectedBody } = makeSut()
+      jest.spyOn(addUser, 'addUser').mockRejectedValue(new Error())
+      await sut.handle({ body: expectedBody })
     })
   })
 })

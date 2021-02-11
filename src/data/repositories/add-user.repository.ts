@@ -12,9 +12,9 @@ export class AddUserRepository implements IAddUser {
     readonly dbGetUserByEmail: IGetUserByEmail,
     readonly encrypter: IEncrypter,
     readonly dbAddUser: IAddUser
-  ) {}
+  ) { }
 
-  async addUser(data: IAddUserModel): Promise<IUserModel> {
+  async addUser(data: IAddUserModel, by: string): Promise<IUserModel> {
     data = { ...data }
 
     const existingUser = await this.dbGetUserByEmail.getUserByEmail(data.email)
@@ -25,6 +25,6 @@ export class AddUserRepository implements IAddUser {
 
     data.password = await this.encrypter.encrypt(data.password)
 
-    return await this.dbAddUser.addUser(data)
+    return await this.dbAddUser.addUser(data, by)
   }
 }

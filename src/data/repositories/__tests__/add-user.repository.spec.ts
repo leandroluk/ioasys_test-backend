@@ -12,6 +12,7 @@ const makeSut = (): {
   encrypter: IEncrypter
   sut: AddUserRepository
   addUserModel: IAddUserModel
+  createdBy: string
 } => {
   const dbGetUserByEmail = new GetUserByEmailMock()
   const dbAddUser = new AddUserMock()
@@ -25,58 +26,60 @@ const makeSut = (): {
     password: 'password',
     passwordConfirmation: 'passwordConfirmation'
   }
+  const createdBy = 'username'
 
   return {
     dbGetUserByEmail,
     dbAddUser,
     encrypter,
     sut,
-    addUserModel
+    addUserModel,
+    createdBy
   }
 }
 
 describe('add-user.repository', () => {
   describe('addUser', () => {
     it('should call encrypter with correct password', async () => {
-      const { sut, encrypter, dbGetUserByEmail, addUserModel } = makeSut()
+      const { sut, encrypter, dbGetUserByEmail, addUserModel, createdBy } = makeSut()
       jest.spyOn(dbGetUserByEmail, 'getUserByEmail').mockResolvedValue(null)
       const encrypterSpy = jest.spyOn(encrypter, 'encrypt')
-      await sut.addUser(addUserModel)
+      await sut.addUser(addUserModel, createdBy)
       expect(encrypterSpy).toHaveBeenCalledWith(addUserModel.password)
     })
 
     it('should call AddUserRepository with correct values', async () => {
-      const { sut, dbGetUserByEmail, dbAddUser, addUserModel } = makeSut()
+      const { sut, dbGetUserByEmail, dbAddUser, addUserModel, createdBy } = makeSut()
       jest.spyOn(dbGetUserByEmail, 'getUserByEmail').mockResolvedValue(null)
       const addUserSpy = jest.spyOn(dbAddUser, 'addUser')
-      await sut.addUser(addUserModel)
-      expect(addUserSpy).toHaveBeenCalledWith({ ...addUserModel, password: 'hashed' })
+      await sut.addUser(addUserModel, createdBy)
+      expect(addUserSpy).toHaveBeenCalledWith({ ...addUserModel, password: 'hashed' }, createdBy)
     })
 
     it('should call GetUserRepository with correct values', async () => {
-      const { sut, dbGetUserByEmail, addUserModel } = makeSut()
+      const { sut, dbGetUserByEmail, addUserModel, createdBy } = makeSut()
       const getUserSpy = jest.spyOn(dbGetUserByEmail, 'getUserByEmail').mockResolvedValue(null)
-      await sut.addUser(addUserModel)
+      await sut.addUser(addUserModel, createdBy)
       expect(getUserSpy).toHaveBeenCalledWith(addUserModel.email)
     })
 
     it('should throw if IEncrypter throws', async () => {
-      const { sut, encrypter, dbGetUserByEmail } = makeSut()
+      const { sut, encrypter, dbGetUserByEmail, createdBy } = makeSut()
       jest.spyOn(dbGetUserByEmail, 'getUserByEmail').mockResolvedValue(null)
       jest.spyOn(encrypter, 'encrypt').mockRejectedValue(new Error())
-      await expect(sut.addUser({} as any)).rejects.toThrow()
+      await expect(sut.addUser({} as any, createdBy)).rejects.toThrow()
     })
 
     it('should throw if IAddUserRepository throws', async () => {
-      const { sut, dbAddUser } = makeSut()
+      const { sut, dbAddUser, createdBy } = makeSut()
       jest.spyOn(dbAddUser, 'addUser').mockRejectedValue(new Error())
-      await expect(sut.addUser({} as any)).rejects.toThrow()
+      await expect(sut.addUser({} as any, createdBy)).rejects.toThrow()
     })
 
     it('should return UserModel if user is created', async () => {
-      const { sut, dbGetUserByEmail, addUserModel } = makeSut()
+      const { sut, dbGetUserByEmail, addUserModel, createdBy } = makeSut()
       jest.spyOn(dbGetUserByEmail, 'getUserByEmail').mockResolvedValue(null)
-      const result = await sut.addUser(addUserModel)
+      const result = await sut.addUser(addUserModel, createdBy)
       expect(result.email).toBe(addUserModel.email)
     })
   })
