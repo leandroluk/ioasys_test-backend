@@ -1,3 +1,4 @@
+import { IDictionary } from '../generics/dictionary.interface'
 import { UserRoleTypes } from '../models/user-role.interface'
 
 export interface ISetUserRoleModel {
@@ -5,5 +6,10 @@ export interface ISetUserRoleModel {
 }
 
 export interface ISetUserRole {
-  setUserRole(data: ISetUserRole): Promise<boolean>
+  setUserRole(data: ISetUserRoleModel): Promise<boolean>
+}
+
+
+export interface ISetUserRoleValidator {
+  validateSetUserRole(data: ISetUserRoleModel): Promise<IDictionary<Error>>
 }
