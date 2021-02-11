@@ -31,8 +31,18 @@ describe('http.helper', () => {
 
   describe('ok', () => {
     it('should return http response with status 200', () => {
-      const sut = ok({})
-      expect(sut.statusCode).toBe(200)
+      let result = ok()
+      expect(result.statusCode).toBe(200)
+      expect(result.header).toEqual({})
+      expect(result.body).toEqual({})
+      result = ok(null)
+      expect(result.statusCode).toBe(200)
+      expect(result.header).toBeNull()
+      expect(result.body).toEqual({})
+      result = ok(null, null)
+      expect(result.statusCode).toBe(200)
+      expect(result.header).toBeNull()
+      expect(result.body).toBeNull()
     })
   })
 
