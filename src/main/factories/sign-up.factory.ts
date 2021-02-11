@@ -1,4 +1,5 @@
 import { AddUserRepository } from '../../data/repositories/add-user.repository'
+import { GetUserByEmailRepository } from '../../data/repositories/get-user-by-email.repository'
 import { BcryptAdapter } from '../../infra/adapters/bcrypt.adapter'
 import { MongoAddUserRepository } from '../../infra/db/mongodb/repositories/mongo-add-user.repository'
 import { MongoGetUserByEmailRepository } from '../../infra/db/mongodb/repositories/mongo-get-user-by-email.repository'
@@ -17,9 +18,10 @@ export const makeSignUpController = (): SignUpController => {
   const noEmptyBodyValidator = new NoEmptyBodyValidator(emptyValidator)
   const addUserValidator = new AddUserValidator(emptyValidator, emailValidator, stringValidator)
   const dbGetUserByEmail = new MongoGetUserByEmailRepository()
+  const getUserByEmail = new GetUserByEmailRepository(dbGetUserByEmail)
   const encrypter = new BcryptAdapter(env.cryptography.salt)
   const dbAddUser = new MongoAddUserRepository()
-  const addUserRepository = new AddUserRepository(dbGetUserByEmail, encrypter, dbAddUser)
+  const addUserRepository = new AddUserRepository(getUserByEmail, encrypter, dbAddUser)
 
   return new SignUpController(noEmptyBodyValidator, addUserValidator, addUserRepository)
 }
