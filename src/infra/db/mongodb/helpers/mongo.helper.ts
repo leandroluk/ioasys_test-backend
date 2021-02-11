@@ -4,7 +4,10 @@ export const MongoHelper = {
   client: null as MongoClient,
 
   objectId(id?: string | ObjectId) {
-    return id instanceof ObjectId ? id : new ObjectId(id)
+    if (id instanceof ObjectId) {
+      return id
+    }
+    return new ObjectId(id)
   },
 
   async connect(uri: string): Promise<MongoClient> {

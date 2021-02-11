@@ -8,6 +8,7 @@ describe('mongo.helper', () => {
       expect(MongoHelper.objectId(id)).toBeDefined()
       expect(MongoHelper.objectId(id.toHexString())).toBeDefined()
     })
+
     it('should throw if wrong id is passed', () => {
       expect(() => MongoHelper.objectId('wrong')).toThrow()
     })
