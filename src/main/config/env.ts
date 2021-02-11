@@ -6,6 +6,9 @@ export default {
     healthCheckBasePath: process.env.app_healthCheckBasePath ?? '/health',
     corsControlAllowOrigin: process.env.app_corsControlAllowOrigin ?? '*'
   },
+  cryptography: {
+    salt: parseInt(process.env.cryptography_salt || '12')
+  },
   mongo: {
     url: process.env.MONGO_URL ?? process.env.mongo_url ?? 'mongodb://localhost:27017/ioasys_test-backend',
     config: {
