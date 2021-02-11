@@ -1,5 +1,6 @@
 import { IAddUserValidator } from '../../domain/use-cases/add-user.interface'
 import { ObjectValidationError } from '../../errors/object-validation.error'
+import { noEmptyBody } from '../decorators/no-empty-body.decorator'
 import { badRequest, ok } from '../helpers/http.helper'
 import { IController } from '../protocols/controller.interface'
 import { IHttpRequest, IHttpResponse } from '../protocols/http.interface'
@@ -9,6 +10,7 @@ export class SignUpController implements IController {
     readonly addUserValidator: IAddUserValidator
   ) {}
 
+  @noEmptyBody()
   async handle(httpRequest: IHttpRequest): Promise<IHttpResponse> {
     const { body } = httpRequest
 
