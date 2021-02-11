@@ -1,7 +1,9 @@
+import { IBaseModel } from '../generics/base-model.interface'
 import { IDictionary } from '../generics/dictionary.interface'
 import { UserRoleTypes } from '../models/user-role.interface'
 
 export interface ISetUserRoleModel {
+  user_id: IBaseModel['_id']
   role: UserRoleTypes
 }
 
